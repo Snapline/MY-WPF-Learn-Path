@@ -10,7 +10,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
         
         <TextBlock Margin="5" Text="苏州市图书馆" FontSize="20" HorizontalAlignment="Center" />
@@ -19,7 +20,7 @@
             <TextBlock Margin="5" Text="登录" FontSize="22" HorizontalAlignment="Center" Foreground="White"/>
         </StackPanel>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Grid.Row="3" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
@@ -32,14 +33,14 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="用户名" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="0" Grid.Column="1" />
+            <TextBox Text="{Binding Username}" Grid.Row="0" Grid.Column="1" Margin="2"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="密码" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="1" Grid.Column="1" />
+            <TextBox Text="{Binding Password}" Grid.Row="1" Grid.Column="1"  Margin="2"/>
 
             <CheckBox Grid.ColumnSpan="2" Content="记住密码" Grid.Row="2"/>
 
-            <Button Grid.ColumnSpan="2" Content="登录" Grid.Row="3"/>
+            <Button Grid.ColumnSpan="2" Content="登录" Grid.Row="3" Click="Login_Button_Click"/>
         </Grid>
     </Grid>
 </Window>
