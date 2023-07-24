@@ -1,9 +1,16 @@
 ﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace LibraryLoginUI
 {
     public class LoginViewModel:INotifyPropertyChanged
     {
+        private MainWindow _mainWindow;
+        public LoginViewModel(MainWindow main)
+        {
+            _mainWindow = main;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         
         private void RaisePropertyChanged(string propertyName)
@@ -34,6 +41,37 @@ namespace LibraryLoginUI
             {
                 _LoginM.Password = value;
                 RaisePropertyChanged("Password");
+            }
+        }
+
+        void LoginFunc()
+        {
+            if (Username == "wpf" && Password == "666")
+            {
+                Home home = new Home();
+                home.Show();
+
+                _mainWindow.Hide();
+            }
+            else
+            {
+                MessageBox.Show("输入的用户名或密码不正确");
+                Username = "";
+                Password = "";
+            }
+        }
+
+        bool CanLoginExecute()
+        {
+            return true;
+        }
+
+        //命令
+        public ICommand LoginAction
+        {
+            get
+            {
+                return new RelyCommand(LoginFunc, CanLoginExecute);
             }
         }
 

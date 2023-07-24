@@ -12,27 +12,9 @@ namespace LibraryLoginUI
         public MainWindow()
         {
             InitializeComponent();
-            loginViewModel = new LoginViewModel();
-            this.DataContext = loginViewModel;
+            this.DataContext = new LoginViewModel(this);
         }
 
-        private void Login_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (loginViewModel.Username == "wpf" && loginViewModel.Password == "666")
-            {
-                Home home = new Home();
-                home.Show();
-
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("输入的用户名或密码不正确");
-                loginViewModel.Username = "";
-                loginViewModel.Password = "";
-            }
-        }
     }
 
 }
